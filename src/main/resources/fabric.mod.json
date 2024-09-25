@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "skyforged-dreams",
+  "version": "${version}",
+  "name": "Skyforged Dreams",
+  "description": "",
+  "authors": [
+    "Artem Ovchinnikov"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/skyforged-dreams/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "skyforged_dreams.client.SkyforgedDreamsClient"
+    ],
+    "main": [
+      "skyforged_dreams.SkyforgedDreams"
+    ]
+  },
+  "mixins": [
+    "skyforged-dreams.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
