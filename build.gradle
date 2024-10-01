@@ -14,6 +14,31 @@ base {
 repositories {
     mavenCentral()
     maven { url 'https://maven.terraformersmc.com/releases' }
+    maven { url = 'https://maven.minecraftforge.net/' }
+}
+
+loom {
+    runs {
+        datagen {
+            inherit server
+            name "Data Generation"
+            vmArg "-Dfabric-api.datagen"
+            vmArg "-Dfabric-api.datagen.output-dir=${file("src/main/generated")}"
+            vmArg "-Dfabric-api.datagen.modid=skyforged-dreams"
+
+            runDir "build/datagen"
+        }
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDirs += [
+                    'src/main/generated'
+            ]
+        }
+    }
 }
 
 dependencies {
@@ -21,6 +46,7 @@ dependencies {
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${project.terra_blender_version}"
 
     modRuntimeOnly "com.terraformersmc:modmenu:${project.mod_menu_version}"
 }
